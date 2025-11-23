@@ -7,9 +7,9 @@ Course project for the discipline "Computer Networks and Network Administration"
 The DHCP Server is an Ubuntu 22.04 Docker container. The configuration is copied on the container and applied. 
 
 The configuration includes:
-- Sub Network with IP `192.168.100.0` and network mask `255.255.255.0`
-- Range of IP addresses assigned to clients -> `192.168.100.10` - `192.168.100.20`
-- Fixed IP address for the MAC address of `client1` -> `192.168.100.19`
+- Sub Network with IP `192.168.100.32` and network mask `255.255.255.224`
+- Range of IP addresses assigned to clients -> `192.168.100.40` - `192.168.100.50`
+- Fixed IP address for the MAC address of `client1` -> `192.168.100.51`
 - Default lease time -> 10 minutes
 
 ## DHCP Clients
@@ -26,7 +26,7 @@ The repository root contains a `docker-compose.yml` file which creates the follo
 - Docker container for a DHCP Client - `dhcp-client-1`
 - Docker container for a DHCP Client - `dhcp-client-2`
 - Docker container for a DHCP Client - `dhcp-client-3`
-- Docker bridge network - `dhcpnet` with subnet `192.168.100.0/24`
+- Docker bridge network - `dhcpnet` with subnet `192.168.100.0/27`
 
 The DHCP clients are configured to depend on the DHCP server, ensuring they request IP addresses only after the server has started.
 
