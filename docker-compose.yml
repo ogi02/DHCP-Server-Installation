@@ -1,0 +1,46 @@
+services:
+  dhcp-server:
+    build: ./dhcp-server
+    container_name: dhcp-server
+    networks:
+      dhcpnet:
+        ipv4_address: 192.168.100.2
+    cap_add:
+      - NET_ADMIN
+
+  dhcp-client-1:
+    build: ./dhcp-client
+    container_name: dhcp-client-1
+    depends_on:
+      - dhcp-server
+    networks:
+      dhcpnet:
+    cap_add:
+      - NET_ADMIN
+
+  dhcp-client-2:
+    build: ./dhcp-client
+    container_name: dhcp-client-2
+    depends_on:
+      - dhcp-server
+    networks:
+      dhcpnet:
+    cap_add:
+      - NET_ADMIN
+
+  dhcp-client-3:
+    build: ./dhcp-client
+    container_name: dhcp-client-3
+    depends_on:
+      - dhcp-server
+    networks:
+      dhcpnet:
+    cap_add:
+      - NET_ADMIN
+
+networks:
+  dhcpnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.100.0/24
