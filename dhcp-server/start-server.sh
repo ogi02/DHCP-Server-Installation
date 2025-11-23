@@ -2,8 +2,8 @@
 # Remove old PID file
 rm -f /var/run/dhcpd.pid
 
-# Optional: clean old leases
+# Clean old leases
 rm -f /var/lib/dhcp/dhcpd.leases~
 
-# Start DHCP server in foreground with debug
+# Start DHCP server
 exec dhcpd -f -d -cf /etc/dhcp/dhcpd.conf eth0
